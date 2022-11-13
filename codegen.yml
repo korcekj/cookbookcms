@@ -1,0 +1,6 @@
+schema: https://bvvtbn6v.api.sanity.io/v1/graphql/production/default
+generates:
+  ./graphql/types.d.ts:
+    plugins:
+      - typescript
+      - typescript-operations
