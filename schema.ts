@@ -92,11 +92,26 @@ export interface Recipe extends SanityDocument {
   category?: SanityReference<Category>;
 
   /**
-   * Portion — `number`
+   * Servings — `object`
    *
    *
    */
-  portion?: number;
+  servings?: {
+    _type: "servings";
+    /**
+     * Size — `number`
+     *
+     *
+     */
+    size?: number;
+
+    /**
+     * Type — `string`
+     *
+     *
+     */
+    type?: "portions" | "pieces";
+  };
 
   /**
    * Preparation (m) — `number`
@@ -120,11 +135,11 @@ export interface Recipe extends SanityDocument {
   ingredients?: Array<SanityKeyed<Ingredient>>;
 
   /**
-   * Steps — `array`
+   * Sections — `array`
    *
    *
    */
-  steps?: Array<SanityKeyed<Step>>;
+  sections?: Array<SanityKeyed<Section>>;
 }
 
 /**
@@ -244,6 +259,23 @@ export type Ingredient = {
    *
    */
   unit?: string;
+};
+
+export type Section = {
+  _type: "section";
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Steps — `array`
+   *
+   *
+   */
+  steps?: Array<SanityKeyed<Step>>;
 };
 
 export type Step = {

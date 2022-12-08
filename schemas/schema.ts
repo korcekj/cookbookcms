@@ -12,6 +12,7 @@ import recipient from './recipient';
 
 // Types
 import ingredient from './ingredient';
+import section from './section';
 import step from './step';
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -30,6 +31,7 @@ export default createSchema({
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     ingredient,
+    section,
     step,
   ]),
 });

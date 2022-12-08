@@ -52,10 +52,31 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'portion',
-      title: 'Portion',
-      type: 'number',
-      validation: (Rule: Rule) => Rule.required().positive().integer().min(1),
+      name: 'servings',
+      title: 'Servings',
+      type: 'object',
+      fields: [
+        {
+          name: 'size',
+          title: 'Size',
+          type: 'number',
+          validation: (Rule: Rule) =>
+            Rule.required().positive().integer().min(1),
+        },
+        {
+          name: 'type',
+          title: 'Type',
+          type: 'string',
+          options: {
+            list: [
+              { title: 'Portions', value: 'portions' },
+              { title: 'Pieces', value: 'pieces' },
+            ],
+          },
+          layout: 'radio',
+          validation: (Rule: Rule) => Rule.required(),
+        },
+      ],
     },
     {
       name: 'preparation',
@@ -77,10 +98,10 @@ export default {
       validation: (Rule: Rule) => Rule.required(),
     },
     {
-      name: 'steps',
-      title: 'Steps',
+      name: 'sections',
+      title: 'Sections',
       type: 'array',
-      of: [{ type: 'step' }],
+      of: [{ type: 'section' }],
       validation: (Rule: Rule) => Rule.required(),
     },
   ],
