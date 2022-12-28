@@ -91,13 +91,6 @@ export default {
       validation: (Rule: Rule) => Rule.required().positive().integer(),
     },
     {
-      name: 'ingredients',
-      title: 'Ingredients',
-      type: 'array',
-      of: [{ type: 'ingredient' }],
-      validation: (Rule: Rule) => Rule.required(),
-    },
-    {
       name: 'sections',
       title: 'Sections',
       type: 'array',

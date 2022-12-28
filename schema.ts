@@ -128,13 +128,6 @@ export interface Recipe extends SanityDocument {
   cook?: number;
 
   /**
-   * Ingredients — `array`
-   *
-   *
-   */
-  ingredients?: Array<SanityKeyed<Ingredient>>;
-
-  /**
    * Sections — `array`
    *
    *
@@ -269,6 +262,13 @@ export type Section = {
    *
    */
   title?: string;
+
+  /**
+   * Ingredients — `array`
+   *
+   *
+   */
+  ingredients?: Array<SanityKeyed<Ingredient>>;
 
   /**
    * Steps — `array`

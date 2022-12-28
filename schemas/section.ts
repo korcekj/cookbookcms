@@ -1,5 +1,5 @@
 import type { Rule } from '@sanity/types';
-import type { Step } from '../schema';
+import type { Step, Ingredient } from '../schema';
 
 export default {
   name: 'section',
@@ -12,6 +12,13 @@ export default {
       type: 'string',
     },
     {
+      name: 'ingredients',
+      title: 'Ingredients',
+      type: 'array',
+      of: [{ type: 'ingredient' }],
+      validation: (Rule: Rule) => Rule.required(),
+    },
+    {
       name: 'steps',
       title: 'Steps',
       type: 'array',
@@ -22,13 +29,16 @@ export default {
   preview: {
     select: {
       title: 'title',
+      ingredients: 'ingredients',
       steps: 'steps',
     },
-    prepare(selection: { steps: Step[] }) {
-      const { steps } = selection;
+    prepare(selection: { ingredients: Ingredient[]; steps: Step[] }) {
+      const { steps, ingredients } = selection;
+      const stepCount = steps?.length || 0;
+      const ingredientCount = ingredients?.length || 0;
 
       return Object.assign({}, selection, {
-        subtitle: `contains ${steps?.length || 0} steps`,
+        subtitle: `contains ${ingredientCount} ingredients and ${stepCount} steps`,
       });
     },
   },
