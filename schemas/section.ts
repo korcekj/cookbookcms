@@ -16,7 +16,6 @@ export default {
       title: 'Ingredients',
       type: 'array',
       of: [{ type: 'ingredient' }],
-      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'steps',
